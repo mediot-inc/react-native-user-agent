@@ -8,8 +8,5 @@ module.exports = {
   getUserAgent() {
     return RNUserAgent.userAgent;
   },
-  getWebViewUserAgent() {
-    return RNUserAgent.webViewUserAgent;
-  },
 };
 

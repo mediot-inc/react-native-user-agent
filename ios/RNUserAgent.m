@@ -141,12 +141,6 @@ RCT_EXPORT_MODULE(RNUserAgent);
 
 }
 
-- (NSString *)getWebViewUserAgent
-{
-    UIWebView* webView = [[UIWebView alloc] initWithFrame:CGRectZero];
-    return [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
-}
-
 
 - (NSDictionary *)constantsToExport
 {
@@ -169,8 +163,7 @@ RCT_EXPORT_MODULE(RNUserAgent);
              @"darwinVersion": darwinVersion,
              @"cfnetworkVersion": cfnVersion,
              @"deviceName": deviceName,
-             @"userAgent": [NSString stringWithFormat:@"%@/%@.%@ CFNetwork/%@ Darwin/%@ (%@ %@/%@)", appName, appVersion, buildNumber, cfnVersion, darwinVersion, deviceName, currentDevice.systemName, currentDevice.systemVersion],
-             @"webViewUserAgent": self.getWebViewUserAgent ?: [NSNull null]
+             @"userAgent": [NSString stringWithFormat:@"%@/%@.%@ CFNetwork/%@ Darwin/%@ (%@ %@/%@)", appName, appVersion, buildNumber, cfnVersion, darwinVersion, deviceName, currentDevice.systemName, currentDevice.systemVersion]
              };
 }
 

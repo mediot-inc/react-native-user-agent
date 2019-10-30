@@ -6,8 +6,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageInfo;
 import android.util.Log;
 import android.os.Build;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Promise;
@@ -42,14 +40,6 @@ public class RNUserAgentModule extends ReactContextBaseJavaModule {
         return "";
     }
 
-    protected String getWebViewUserAgent() {
-        if (Build.VERSION.SDK_INT >= 17) {
-            return WebSettings.getDefaultUserAgent(this.reactContext);
-        }
-
-        return new WebView(this.reactContext).getSettings().getUserAgentString();
-    }
-
     @Override
     public Map<String, Object> getConstants() {
         HashMap<String, Object> constants = new HashMap<String, Object>();
@@ -81,7 +71,6 @@ public class RNUserAgentModule extends ReactContextBaseJavaModule {
         constants.put("applicationVersion", applicationVersion);
         constants.put("applicationBuildNumber", buildNumber);
         constants.put("userAgent", userAgent);
-        constants.put("webViewUserAgent", this.getWebViewUserAgent());
 
         return constants;
     }
